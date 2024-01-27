@@ -1,19 +1,25 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-
-export default function Cards() {
+import "../Asset/css/card.css"
+export default function Cards(props) {
+  const img_300 = "https://image.tmdb.org/t/p/w300";
+  const unavailable = "https://www.movienewz.com/img/films/poster-holder.jpg";
   return (
-    <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
-      </Card.Body>
-    </Card>
+    <div className="col-md-3" style={{ padding: "10px" }} key={props.id}>
+      <Card style={{ width: "18rem"}}>
+        <Card.Img
+          variant="top"
+          src={props.poster ? `${img_300}${props.poster}` : unavailable}
+        />
+        <Card.Body className="ellipsis-container">
+          <Card.Title>{props.title}</Card.Title>
+          <Card.Subtitle className="mb-2 text-muted">{props.mediatype}</Card.Subtitle>
+          <Card.Text>{props.overview}</Card.Text>
+          <Card.Text><b>IMDB Rating- {props.vote} Date- {props.date}</b></Card.Text>
+          <Button variant="primary">Add To Cart</Button>
+        </Card.Body>
+      </Card>
+    </div>
   );
 }

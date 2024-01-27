@@ -1,0 +1,7 @@
+/* CSS for truncating text with ellipsis */
+.ellipsis-container {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
