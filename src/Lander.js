@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Cards from "./UIcomponents/Cards";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
-import "../src/Asset/css/pagination.css"
+import "../src/Asset/css/pagination.css";
 export default function Lander() {
   let [allData, setAllData] = useState([]);
   let [error, setError] = useState(false);
@@ -16,7 +16,6 @@ export default function Lander() {
       .then((res) => {
         setAllData(res.data.results);
         setTotalPage(Math.round(res.data.total_pages / 50));
-        console.log(res.data);
       })
       .catch((err) => {
         setError(err);
@@ -38,7 +37,6 @@ export default function Lander() {
             <Cards
               id={trend.id}
               poster={trend.poster_path}
-              overview={trend.overview}
               title={trend.title || trend.name}
               mediatype={trend.media_type}
               date={trend.release_date || trend.fisrt_air_date}

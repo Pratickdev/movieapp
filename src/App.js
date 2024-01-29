@@ -5,7 +5,7 @@ import Head from './Head';
 import Footer from './Footer';
 function App() {
   return (
-    <div className="App">
+    <div className="App bodycolor">
       <Head/>
       <Lander/>
       <Footer/>
