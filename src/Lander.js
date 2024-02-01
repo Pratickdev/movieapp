@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, createContext } from "react";
 import Cards from "./UIcomponents/Cards";
+import Pagination from "./UIcomponents/Pagination";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
-import "../src/Asset/css/pagination.css";
 export default function Lander() {
   let [allData, setAllData] = useState([]);
   let [error, setError] = useState(false);
@@ -35,6 +35,7 @@ export default function Lander() {
         {allData &&
           allData.map((trend) => (
             <Cards
+              key={trend.id}
               id={trend.id}
               poster={trend.poster_path}
               title={trend.title || trend.name}
@@ -44,34 +45,7 @@ export default function Lander() {
             />
           ))}
         {totalPage > 1 && (
-          <div className="pagination">
-            <span
-              onClick={() => {
-                handelPage(page - 1);
-              }}
-              className={page > 1 ? "" : "paginationDisable"}
-            >
-              «
-            </span>
-            {[...Array(totalPage)].map((_, i) => (
-              <span
-                className={page === i + 1 ? "pagination_selected" : ""}
-                onClick={() => {
-                  handelPage(i + 1);
-                }}
-              >
-                {i + 1}
-              </span>
-            ))}
-            <span
-              onClick={() => {
-                handelPage(page + 1);
-              }}
-              className={page < totalPage ? "" : "paginationDisable"}
-            >
-              »
-            </span>
-          </div>
+          <Pagination totalPage={totalPage} page={handelPage} />
         )}
       </div>
     </Container>

@@ -1,6 +1,9 @@
 .bodycolor {
     min-height: 100vh;
-    background-color: #39445a;
+    background-color: #a4a9b3;
     padding-bottom: 70px px;
     color: azure;
+}
+a {
+    text-decoration: none;
 }
