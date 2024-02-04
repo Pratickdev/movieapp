@@ -1,16 +1,15 @@
 import "./App.css";
-import Home from "./Home";
-import { createContext, useState } from "react";
-export const CountContext = createContext("");
-function App() {
-  const [count, setCount] = useState(0);
+import Lander from "./Lander";
+import Head from "./Head";
+import Footer from "./Footer";
+export default function App() {
   return (
-    <CountContext.Provider value={{ count, setCount }}>
+    <>
       <div className="App bodycolor">
-        <Home />
+        <Head />
+        <Lander />
+        <Footer />
       </div>
-    </CountContext.Provider>
+    </>
   );
 }
-
-export default App;

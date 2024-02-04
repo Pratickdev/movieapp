@@ -5,6 +5,7 @@ import Cards from "./UIcomponents/Cards";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
 import Pagination from "./UIcomponents/Pagination";
+import Geners from "./Geners";
 export default function Web() {
   let [allData, setAllData] = useState([]);
   let [error, setError] = useState(false);
@@ -35,6 +36,7 @@ export default function Web() {
     <div className="App bodycolor">
       <Head />
       <Container>
+      <Geners type='movie'/>
         <div className="row wraper">
           {allData &&
             allData.map((trend) => (

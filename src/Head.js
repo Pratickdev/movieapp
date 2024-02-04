@@ -6,7 +6,7 @@ import Navbar from "react-bootstrap/Navbar";
 import { Form } from "react-bootstrap";
 import { CartCheckFill } from "react-bootstrap-icons";
 import { useContext } from "react";
-import { CountContext } from "../src/App";
+import { CountContext } from "../src/Home";
 export default function Head() {
   let cartCount= useContext(CountContext);
   cartCount=cartCount.count;
