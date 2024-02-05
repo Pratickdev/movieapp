@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Chip from "@mui/material/Chip";
-import Stack from "@mui/material/Stack";
 import axios from "axios";
+import { useContext } from "react";
+import { CountContext } from "./Home";
 export default function Geners(props) {
   const [gener, setGener] = useState([]);
-  const [selectedGener, setSelectedGener] = useState([]);
+  // const [selectedGener, setSelectedGener] = useState([]);
+  const {  selectedGener, setSelectedGener } = useContext(CountContext);
   function fetchGeners() {
     axios
       .get(

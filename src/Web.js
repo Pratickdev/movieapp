@@ -5,15 +5,21 @@ import Cards from "./UIcomponents/Cards";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
 import Pagination from "./UIcomponents/Pagination";
+import Geners from "./Geners";
+import { CountContext } from "./Home";
+import { useContext } from "react";
+import useGener from "./hooks/useGener";
 export default function Web() {
   let [allData, setAllData] = useState([]);
   let [error, setError] = useState(false);
   let [page, setPage] = useState(1);
   let [totalPage, setTotalPage] = useState(0);
+  let { selectedGener } = useContext(CountContext);
+  let gnrId = useGener(selectedGener);
   function getData() {
     axios
       .get(
-        `https://api.themoviedb.org/3/discover/tv?api_key=6caab947140afec2fe6f804702380c15&page=${page}`
+        `https://api.themoviedb.org/3/discover/tv?api_key=6caab947140afec2fe6f804702380c15&page=${page}&with_genres=${gnrId}`
       )
       .then((res) => {
         setAllData(res.data.results);
@@ -29,12 +35,13 @@ export default function Web() {
   }
   useEffect(() => {
     getData();
-  }, [page]);
+  }, [page,gnrId]);
   if (error) return <>{error}</>;
   return (
     <div className="App bodycolor">
       <Head />
       <Container>
+        <Geners type='tv'/>
         <div className="row wraper">
           {allData &&
             allData.map((trend) => (

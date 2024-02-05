@@ -6,8 +6,9 @@ export const CountContext = createContext("");
 export default function Home() {
   const [count, setCount] = useState(0);
   const[selected , setSelected]=useState([]);
+  const[selectedGener , setSelectedGener]=useState([]);
   return (
-    <CountContext.Provider value={{ count, setCount,selected , setSelected }}>
+    <CountContext.Provider value={{ count, setCount,selected , setSelected,selectedGener,setSelectedGener }}>
       <RouterProvider router={router}>
       </RouterProvider>
     </CountContext.Provider>
