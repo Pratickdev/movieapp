@@ -4,11 +4,12 @@ import { useEffect, useState } from "react";
 import Cards from "./UIcomponents/Cards";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
-import Pagination from "./UIcomponents/Pagination";
+// import Pagination from "./UIcomponents/Pagination";
 import Geners from "./Geners";
 import { CountContext } from "./Home";
 import { useContext } from "react";
 import useGener from "./hooks/useGener";
+import MuiPagination from "./UIcomponents/MuiPagination";
 export default function Web() {
   let [allData, setAllData] = useState([]);
   let [error, setError] = useState(false);
@@ -23,16 +24,16 @@ export default function Web() {
       )
       .then((res) => {
         setAllData(res.data.results);
-        console.log(res.data);
-        setTotalPage(Math.round(res.data.total_pages / 2000));
+        console.log(res.data.total_pages);
+        setTotalPage(Math.round(res.data.total_pages / 100));
       })
       .catch((err) => {
         setError(err);
       });
   }
-  function handelPage(pageval) {
-    setPage(pageval);
-  }
+  // function handelPage(pageval) {
+  //   setPage(pageval);
+  // }
   useEffect(() => {
     getData();
   }, [page, gnrId]);
@@ -41,7 +42,7 @@ export default function Web() {
     <div className="App bodycolor">
       <Head />
       <Container>
-        <Geners type="movie" />
+        <Geners type="movie" setPage={setPage} />
         <div className="row wraper">
           {allData &&
             allData.map((trend) => (
@@ -56,7 +57,8 @@ export default function Web() {
               />
             ))}
           {totalPage > 1 && (
-            <Pagination totalPage={totalPage} page={handelPage} />
+            //<Pagination totalPage={totalPage} page={handelPage} />
+            <MuiPagination setPage={setPage} setCount={totalPage} />
           )}
         </div>
       </Container>

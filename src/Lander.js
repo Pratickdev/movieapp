@@ -3,6 +3,7 @@ import Cards from "./UIcomponents/Cards";
 import Pagination from "./UIcomponents/Pagination";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
+import MuiPagination from "./UIcomponents/MuiPagination";
 export default function Lander() {
   let [allData, setAllData] = useState([]);
   let [error, setError] = useState(false);
@@ -43,9 +44,11 @@ export default function Lander() {
               date={trend.release_date || trend.fisrt_air_date}
               vote={trend.vote_average.toFixed(1)}
             />
+            
           ))}
         {totalPage > 1 && (
-          <Pagination totalPage={totalPage} page={handelPage} />
+          // <Pagination totalPage={totalPage} page={handelPage} />
+          <MuiPagination setPage={setPage} setCount={totalPage}/>
         )}
       </div>
     </Container>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import "../Asset/css/card.css";
@@ -7,19 +7,18 @@ import { useContext } from "react";
 import { CountContext } from "../Home";
 import { useDispatch, useSelector } from "react-redux";
 import { cartData } from "../redux/CartSlice";
+import { Link } from "react-router-dom";
 export default function Cards(props) {
   const { count, setCount, selected, setSelected } = useContext(CountContext);
   const img_300 = "https://image.tmdb.org/t/p/w300";
   const unavailable = "https://www.movienewz.com/img/films/poster-holder.jpg";
   const dispatch = useDispatch();
   const catData = useSelector((state) => state.Cart.value);
-  console.log(catData);
   function handelclick(data, clickedId) {
     setCount(count + 1);
     let cartArry = [];
     cartArry = [...catData, data];
     dispatch(cartData(cartArry));
-    console.log(data);
     let clickedIndexArry = [];
     clickedIndexArry = [...selected, clickedId];
     setSelected(clickedIndexArry);
@@ -27,14 +26,16 @@ export default function Cards(props) {
 
   return (
     <div className="col-md-3" style={{ padding: "10px" }} key={props.id}>
+      
       <Card className="cardbody" style={{ width: "16rem" }}>
         <Badge className="badge" bg={props.vote > 7 ? "success" : "warning"}>
           {props.vote}
         </Badge>
+        <Link to={`/details/${props.id}/${props.mediatype?props.mediatype:'tv'}`}>
         <Card.Img
           variant="top"
           src={props.poster ? `${img_300}${props.poster}` : unavailable}
-        />
+        /></Link>
         <Card.Body>
           <Card.Title className="ellipsis-container">{props.title}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">

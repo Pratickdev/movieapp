@@ -20,11 +20,13 @@ export default function Geners(props) {
   const handleClick = (gnr) => {
     setSelectedGener([...selectedGener, gnr]);
     setGener(gener.filter((g)=>(g.id !== gnr.id)));
+    props.setPage(1);
 
   };
   const handleDelete = (gnr) => {
     setGener([...gener,gnr]);
     setSelectedGener(selectedGener.filter((g)=>(g.id!==gnr.id)))
+    props.setPage(1);
   };
   useState(() => {
     fetchGeners();
