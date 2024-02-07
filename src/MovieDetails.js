@@ -6,7 +6,6 @@ import axios from "axios";
 
 export default function MovieDetails() {
   let param = useParams();
-  console.log(param);
   let [data, setData] = useState([]);
   const img_300 = "https://image.tmdb.org/t/p/w300";
   const unavailable = "https://www.movienewz.com/img/films/poster-holder.jpg";
@@ -31,24 +30,23 @@ export default function MovieDetails() {
       <Head />
       <Container>
         <div className="container">
-                <div className="card-image">
+                <div className="card-image" style={{padding: '9px'}}>
                   <img
-                    src={data.backdrop_path ? `${img_300}${data.backdrop_path}` : unavailable}
-                    alt=""
-                    style={{ width: "100%", height: "100%" }}
+                    src={data.poster_path ? `${img_300}${data.poster_path}` : unavailable}
+                    alt={data.original_title}
+                    style={{borderRadius: '11px'}}
                   />
                 </div>
                 <div className="card-right">
-                  <h5 className="item-title">title</h5>
+                  <h5 className="item-title">{data.original_title}</h5>
                   <p className="item-price">
-                    <b>$5.00</b>
+                    <b>$50.00</b>
                   </p>
-                  <p className="item-desc">desc</p>
+                  <p className="item-desc">{data.overview}</p>
                   <br></br>
                   <div>
-                    <p className="item-size-text">SIZE</p>
-                    <p className="item-size-star">*</p>
-                    <p className="item-size-selected"></p>
+                    <p className="item-size-text">Rating : {data.vote_average}</p>
+                    <p className="item-size-star">Release Date: {data.release_date}</p>
                   </div>
                 </div>
         </div>

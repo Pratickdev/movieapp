@@ -11,15 +11,15 @@ import "../src/Asset/css/cart.css";
 import { cartData } from "./redux/CartSlice";
 export default function Cart() {
   const cartProduct = useSelector((state) => state.Cart.value);
-  const { count, setCount , selected, setSelected} = useContext(CountContext);
+  const { count, setCount, selected, setSelected } = useContext(CountContext);
   const dispatch = useDispatch();
   useEffect(() => {}, [cartProduct]);
   function handelClick(id) {
     setCount(count - 1);
     let alldata = cartProduct;
     let filteredACartdata = alldata.filter((eachdata) => eachdata.id !== id);
-    let allIndex=selected
-    let filteredIndex=allIndex.filter((each) => each !== id);
+    let allIndex = selected;
+    let filteredIndex = allIndex.filter((each) => each !== id);
     console.log(filteredIndex);
     setSelected(filteredIndex);
     dispatch(cartData(filteredACartdata));
@@ -28,12 +28,12 @@ export default function Cart() {
   if (cartProduct.length < 1)
     return (
       <>
-        <Head />
-        <Container>
-          <div className="App bodycolor">
+        <div className="App bodycolor">
+          <Head />
+          <Container>
             <Figure.Caption>Empty Cart</Figure.Caption>
-          </div>
-        </Container>
+          </Container>
+        </div>
       </>
     );
   return (
@@ -52,8 +52,7 @@ export default function Cart() {
                     src={each.pic}
                     className="img"
                   />
-                  <Figure.Caption   style={{ fontWeight: "700" }}
->
+                  <Figure.Caption style={{ fontWeight: "700" }}>
                     {each.name}
                     <CloseButton
                       onClick={() => {
