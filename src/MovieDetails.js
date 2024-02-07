@@ -30,25 +30,29 @@ export default function MovieDetails() {
       <Head />
       <Container>
         <div className="container">
-                <div className="card-image" style={{padding: '9px'}}>
-                  <img
-                    src={data.poster_path ? `${img_300}${data.poster_path}` : unavailable}
-                    alt={data.original_title}
-                    style={{borderRadius: '11px'}}
-                  />
-                </div>
-                <div className="card-right">
-                  <h5 className="item-title">{data.original_title}</h5>
-                  <p className="item-price">
-                    <b>$50.00</b>
-                  </p>
-                  <p className="item-desc">{data.overview}</p>
-                  <br></br>
-                  <div>
-                    <p className="item-size-text">Rating : {data.vote_average}</p>
-                    <p className="item-size-star">Release Date: {data.release_date}</p>
-                  </div>
-                </div>
+          <div className="card-image" style={{ padding: "9px" }}>
+            <img
+              src={
+                data.poster_path ? `${img_300}${data.poster_path}` : unavailable
+              }
+              alt={data.original_title}
+              style={{ borderRadius: "11px" }}
+            />
+          </div>
+          <div className="card-right">
+            <h5 className="item-title">{data.original_title}</h5>
+            <p className="item-price">
+              <b>$50.00</b>
+            </p>
+            <p className="item-desc">{data.overview}</p>
+            <div>
+              <p className="item-size-text">Rating : {data.vote_average}</p>
+              <p className="item-size-star">
+                Release Date:{" "}
+                {data.release_date ? data.release_date : "Not Available"}
+              </p>
+            </div>
+          </div>
         </div>
       </Container>
     </div>
