@@ -42,7 +42,7 @@ export default function MovieDetails() {
           <div className="card-right">
             <h5 className="item-title">{data.original_title}</h5>
             <p className="item-price">
-              <b>$50.00</b>
+              <b>$500.00</b>
             </p>
             <p className="item-desc">{data.overview}</p>
             <div>

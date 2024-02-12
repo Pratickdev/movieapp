@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Cards from "./UIcomponents/Cards";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
-// import Pagination from "./UIcomponents/Pagination";
 import Geners from "./Geners";
 import { CountContext } from "./Home";
 import { useContext } from "react";

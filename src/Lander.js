@@ -1,6 +1,5 @@
 import { useEffect, useState, createContext } from "react";
 import Cards from "./UIcomponents/Cards";
-import Pagination from "./UIcomponents/Pagination";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
 import MuiPagination from "./UIcomponents/MuiPagination";

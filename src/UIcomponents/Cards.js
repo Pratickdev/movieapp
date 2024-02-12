@@ -25,7 +25,7 @@ export default function Cards(props) {
   }
 
   return (
-    <div className="col-md-3" style={{ padding: "10px" }} key={props.id}>
+    <div className="col-md-3 col-sm-12" style={{ padding: "10px" }} key={props.id}>
       
       <Card className="cardbody" style={{ width: "16rem" }}>
         <Badge className="badge" bg={props.vote > 7 ? "success" : "warning"}>
